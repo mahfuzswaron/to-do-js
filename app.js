@@ -1,5 +1,7 @@
 const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
 
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -13,6 +15,14 @@ taskForm.addEventListener("submit", (event) => {
     }
 });
 function addTask(task) {
-    console.log("recieved ", task);
+    const li = document.createElement("li");
+    li.innerText = task;
+
+    taskList.appendChild(li);
+
+
+
+
+    // end 
     taskInput.value = "";
 }
