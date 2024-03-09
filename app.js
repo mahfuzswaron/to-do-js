@@ -2,6 +2,10 @@ const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
+function completeTask(event) {
+    console.log("task completed")
+
+}
 
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -14,12 +18,22 @@ taskForm.addEventListener("submit", (event) => {
         return;
     }
 });
+
 function addTask(task) {
+    // create li
     const li = document.createElement("li");
     li.innerText = task;
 
-    taskList.appendChild(li);
+    // create complete / done btn
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "Done";
+    completeBtn.addEventListener("click", completeTask)
 
+    // append complete btn to li
+    li.appendChild(completeBtn);
+
+    // append li to taskList(ul)
+    taskList.appendChild(li);
 
 
 
