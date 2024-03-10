@@ -29,12 +29,18 @@ h1 {
 }
 
 #taskList li {
-    background-color: #fff;
+    /* background-color: #fff; */
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.completed-task {
+    background-color: #50C878;
+    color: white;
+}
+
 
 button {
     background-color: #007bff;

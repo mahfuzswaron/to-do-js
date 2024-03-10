@@ -2,11 +2,6 @@ const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-function completeTask(li) {
-    // li.style.backgroundColor = "#50C878";
-    
-
-}
 
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -28,10 +23,52 @@ function addTask(task) {
     // create complete / done btn
     const completeBtn = document.createElement("button");
     completeBtn.textContent = "Done";
-    completeBtn.addEventListener("click", () => completeTask(li))
 
-    // append complete btn to li
+    completeBtn.addEventListener("click", () => {
+        li.classList.add("completed-task");
+        li.removeChild(completeBtn);
+    });
+
+    // create delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+
+    deleteBtn.addEventListener("click", () => {
+        taskList.removeChild(li);
+    });
+
+    // create edit button
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+
+    editBtn.addEventListener("click", () => {
+        const editedText = prompt();
+
+        if (editedText) {
+
+            li.textContent = editedText;
+
+            // access class list
+            const classList = li.classList;
+            
+            // make array from the class list
+            const classArray = [...classList];
+            
+
+            // check if the task already complete
+            if (classArray.indexOf("completed-task") == -1) {
+                li.appendChild(completeBtn);
+            }
+
+            li.appendChild(deleteBtn);
+            li.appendChild(editBtn);
+        }
+    })
+
+    // append btns to li
     li.appendChild(completeBtn);
+    li.appendChild(deleteBtn);
+    li.appendChild(editBtn);
 
     // append li to taskList(ul)
     taskList.appendChild(li);
@@ -41,3 +78,5 @@ function addTask(task) {
     // end 
     taskInput.value = "";
 }
+
+
