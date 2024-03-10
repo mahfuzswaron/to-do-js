@@ -2,8 +2,9 @@ const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-function completeTask(event) {
-    console.log("task completed")
+function completeTask(li) {
+    // li.style.backgroundColor = "#50C878";
+    
 
 }
 
@@ -27,7 +28,7 @@ function addTask(task) {
     // create complete / done btn
     const completeBtn = document.createElement("button");
     completeBtn.textContent = "Done";
-    completeBtn.addEventListener("click", completeTask)
+    completeBtn.addEventListener("click", () => completeTask(li))
 
     // append complete btn to li
     li.appendChild(completeBtn);
